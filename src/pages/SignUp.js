@@ -33,6 +33,7 @@ const SignUp = () => {
   const validate = () => {
     const reg = /[A-Za-z_0-9]{6,}/
     const regPhone = /[0-9]{10,10}/
+    // eslint-disable-next-line no-useless-escape
     const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
     let username = '',
       password = '',

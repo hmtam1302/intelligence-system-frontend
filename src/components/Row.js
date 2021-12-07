@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+// eslint-disable-next-line no-unused-vars
 import axios from '../api/axios'
 import '../assets/css/Row.css'
 import MovieModal from './MovieModal'

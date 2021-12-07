@@ -15,6 +15,7 @@ const MovieModal = ({
   setModalVisibility,
 }) => {
   const [isHeart, setIsHeart] = useState(false)
+  // eslint-disable-next-line no-unused-vars
   const opts = {
     height: '390',
     width: '100%',

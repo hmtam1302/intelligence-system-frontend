@@ -1,6 +1,7 @@
 import { BaseController } from './BaseController'
 //Implement User controller
 export class MovieController extends BaseController {
+  // eslint-disable-next-line no-useless-constructor
   constructor() {
     super()
   }
