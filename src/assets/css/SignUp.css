@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../img/landing-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.sign-up-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-mask {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.75;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sign-up-container img {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  max-height: 60px;
+}
+
+.sign-up-content {
+  height: 760px;
+  width: 450px;
+  background-color: #514e4e;
+  opacity: 0.9;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding: 60px 40px;
+}
+
+.sign-up-content h2 {
+  color: white;
+  margin: 20px 0;
+  padding: 0;
+}
+
+.sign-up-form input {
+  margin: 10px 0;
+  border-radius: 5px;
+  width: 314px;
+  height: 50px;
+  font-size: 20px;
+  border: none;
+  padding: 0 10px;
+}
+
+.sign-up-form .err {
+  height: 32px;
+  width: 314px;
+  color: orange;
+  font-size: 12px;
+}
+
+.sign-up-form .input {
+  background-color: #333;
+  color: white;
+}
+
+.sign-up-form .submit-btn {
+  color: white;
+  background-color: red;
+}
+
+.sign-up-form-helper {
+  font-size: 14px;
+  color: rgb(180, 180, 180);
+  display: flex;
+  align-items: center;
+}
+
+.sign-up-form-helper input {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+.sign-up-form-other {
+  width: 314px;
+  color: rgb(180, 180, 180);
+}
+
+.sign-up-form-other a {
+  color: white;
+}
