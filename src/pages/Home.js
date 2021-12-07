@@ -2,7 +2,7 @@ import React from 'react'
 import Row from '../components/Row'
 import Banner from '../components/Banner'
 import Nav from '../components/Nav'
-import requests from '../API/requests'
+import requests from '../api/requests'
 import '../assets/css/Home.css'
 
 const Home = () => {

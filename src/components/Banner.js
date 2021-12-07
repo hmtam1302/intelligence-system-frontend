@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import axios from '../API/axios'
-import requests from '../API/requests'
+import axios from '../api/axios'
+import requests from '../api/requests'
 import '../assets/css/Banner.css'
 
 const Banner = () => {

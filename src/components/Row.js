@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import axios from '../API/axios'
+import axios from '../api/axios'
 import '../assets/css/Row.css'
 import MovieModal from './MovieModal'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
-import { MovieController } from '../API/controllers'
+import { MovieController } from '../api/controllers'
 import { Card, CardContent } from '@material-ui/core'
 
 const Row = ({ title, fetchUrl, isLargeRow, theme, id }) => {

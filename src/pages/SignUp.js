@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import '../assets/css/SignUp.css'
 import { Snackbar } from '@material-ui/core'
 import logo from '../assets/img/logo.png'
-import { UserController } from '../API/controllers'
+import { UserController } from '../api/controllers'
 import { useDispatch } from 'react-redux'
 import MuiAlert from '@material-ui/lab/Alert'
 

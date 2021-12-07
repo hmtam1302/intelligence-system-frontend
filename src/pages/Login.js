@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/css/Login.css';
 import facebook from '../assets/img/facebook.png';
 import logo from '../assets/img/logo.png';
-import { UserController } from '../API/controllers'
+import { UserController } from '../api/controllers'
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
 import SnackBar from '../components/SnackBar';
@@ -116,6 +116,7 @@ const Login = () => {
       </div>
       <SnackBar
         open={open}
+        severity='warning'
         onClose={() => setOpen(false)}
         content={responseErr}
       />

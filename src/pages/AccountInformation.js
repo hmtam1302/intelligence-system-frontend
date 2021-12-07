@@ -5,7 +5,7 @@ import { Edit, Save, ArrowBack } from '@material-ui/icons'
 import { TextField, Button } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { UserController } from '../API/controllers'
+import { UserController } from '../api/controllers'
 import SnackBar from '../components/SnackBar'
 import Loading from '../components/Loading.js'
 
