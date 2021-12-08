@@ -51,13 +51,13 @@ const Row = ({ title, fetchUrl, isLargeRow, theme, id }) => {
           </span>
         </div>
         <div id={id} className='row__posters'>
-          {movies.map((movie) => (
+          {movies.map((movie, index) => (
             <Card
-              key={movie.title}
+              key={movie.title + index}
               onClick={() => handleClick(movie)}
-              style={{ backgroundColor: '#2d2c2c', color: 'white' }}
+              style={{ backgroundColor: '#2d2c2c', color: 'white', minWidth: 'calc(10% - 10px)', overflow: 'visible'}}
               className={`row__poster ${isLargeRow && 'row__posterLarge'}`}>
-              <CardContent>{movie.title}</CardContent>
+              <CardContent >{movie.title}</CardContent>
             </Card>
           ))}
         </div>

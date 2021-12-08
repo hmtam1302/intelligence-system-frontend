@@ -4,12 +4,39 @@ import Banner from '../components/Banner'
 import Nav from '../components/Nav'
 import requests from '../api/requests'
 import '../assets/css/Home.css'
+import { useSelector, useDispatch } from 'react-redux';
+import { UserController } from '../api/controllers';
+import SnackBar from '../components/SnackBar';
 
 const Home = () => {
   const [search, setSearch] = React.useState('')
+  //State
+  const { username } = useSelector(state => state)
+  const [open, setOpen] = React.useState(false)
+  const [responseErr, setResponseErr] = React.useState('')
+
+  //Dispatch
+  const dispatch = useDispatch();
+
+  //Rendering
+  React.useEffect(() => {
+    const getData = async () => {
+      const response = await new UserController(username).getInfo();
+      if (response.error) {
+        setResponseErr(response.error.response.data.message)
+        setOpen(true)
+      } else {
+        dispatch({ type: 'UPDATE_USER', payload: { userinfo: response.data } })
+      }
+    }
+    getData()
+    // eslint-disable-next-line
+  }, [username, dispatch])
+
+
   return (
     <div className='app'>
-      <Nav onChangeSearch={(value) =>setSearch(value)} />
+      <Nav onChangeSearch={(value) => setSearch(value)} />
       <Banner />
       {/* <Row
         title='Recommend netflix movie'
@@ -61,6 +88,12 @@ const Home = () => {
           />
         </>
       )}
+      <SnackBar
+        open={open}
+        onClose={() => setOpen(false)}
+        content={responseErr}
+        severity='warning'
+      />
     </div>
   )
 }

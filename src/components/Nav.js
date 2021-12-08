@@ -34,7 +34,7 @@ const Nav = ({ onChangeSearch }) => {
   const handleClose = () => {
     setAnchorEl(null)
   }
-
+  
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 50) {

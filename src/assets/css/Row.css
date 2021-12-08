@@ -118,6 +118,11 @@ h2 {
   display: flex;
   align-items: center;
 }
+
+.row__poster .MuiPaper-root{
+  width: 10%!important;
+}
+
 @media screen and (min-width: 1200px) {
   .row__poster {
     max-height: 160px;
