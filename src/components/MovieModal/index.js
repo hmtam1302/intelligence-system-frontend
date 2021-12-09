@@ -3,18 +3,32 @@ import '../../assets/css/MovieModal.css'
 import CancelIcon from '@material-ui/icons/Cancel'
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder'
 import FavoriteIcon from '@material-ui/icons/Favorite'
+import { useSelector, useDispatch } from 'react-redux'
+import { UserController } from '../../api/controllers';
 
 const MovieModal = ({
-  backdrop_path,
+  movieId,
+  genres,
   title,
   overview,
   name,
-  release_date,
-  first_air_date,
-  vote_average,
   setModalVisibility,
 }) => {
-  const [isHeart, setIsHeart] = useState(false)
+  //Redux
+  const { username, userinfo } = useSelector(state => state);
+  const dispatch = useDispatch();
+
+  const [isHeart, setIsHeart] = useState(false);
+
+  React.useEffect(() => {
+    const listFavorites = userinfo && userinfo.favorite ? userinfo.favorite : [];
+    // eslint-disable-next-line eqeqeq
+    if (listFavorites.findIndex(ele => ele == movieId) != -1) {
+      setIsHeart(true);
+    } else {
+      setIsHeart(false);
+    }
+  }, [movieId, userinfo])
   // eslint-disable-next-line no-unused-vars
   const opts = {
     height: '390',
@@ -25,9 +39,21 @@ const MovieModal = ({
   }
 
   //Handle favorite
-  const handleFavorite = state => {
+  const handleFavorite = async state => {
     setIsHeart(state);
-    //TODO: Display recommend system
+    //Remove favorite
+    const favorite = userinfo.favorite;
+    let changes = {};
+    if (state) {
+      favorite.push(movieId);
+      changes = { favorite };
+
+    } else {
+      favorite.splice(favorite.indexOf(movieId));
+      changes = { favorite };
+    }
+    await new UserController(username).update(changes);
+    dispatch({ type: "UPDATE_FAVORITE", payload: { favorite } });
   }
 
   return (
@@ -43,7 +69,9 @@ const MovieModal = ({
           <div className='modal__content'>
             <h2 className='modal__title'>{title ? title : name}</h2>
             <p className='modal__overview'>{overview}</p>
-            <p className='modal__overview' style={{display:'flex'}}>
+            <p className='modal__overview'>{genres}</p>
+            <br></br>
+            <p className='modal__overview' style={{ display: 'flex' }}>
               Favorite:{'  '}
               {isHeart ? (
                 <FavoriteIcon
