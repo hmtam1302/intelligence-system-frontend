@@ -56,6 +56,10 @@ const Nav = ({ onChangeSearch }) => {
     navigate('/user/password')
   }
 
+  const handleConfigApriori = () => {
+    navigate('/user/config')
+  }
+
   const handleLogout = () => {
     window.localStorage.removeItem('username')
     dispatch({ type: 'LOGOUT', payload: { username: null } })
@@ -126,6 +130,12 @@ const Nav = ({ onChangeSearch }) => {
             <LockOpen fontSize='small' />
           </ListItemIcon>
           Change password
+        </MenuItem>
+        <MenuItem onClick={handleConfigApriori}>
+          <ListItemIcon>
+            <LockOpen fontSize='small' />
+          </ListItemIcon>
+          Config apriori arguments
         </MenuItem>
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>

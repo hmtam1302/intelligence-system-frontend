@@ -4,24 +4,24 @@ import Banner from '../components/Banner'
 import Nav from '../components/Nav'
 import requests from '../api/requests'
 import '../assets/css/Home.css'
-import { useSelector, useDispatch } from 'react-redux';
-import { UserController } from '../api/controllers';
-import SnackBar from '../components/SnackBar';
+import { useSelector, useDispatch } from 'react-redux'
+import { UserController } from '../api/controllers'
+import SnackBar from '../components/SnackBar'
 
 const Home = () => {
   const [search, setSearch] = React.useState('')
   //State
-  const { username } = useSelector(state => state)
+  const { username, MoviesRecommend } = useSelector((state) => state)
   const [open, setOpen] = React.useState(false)
   const [responseErr, setResponseErr] = React.useState('')
 
   //Dispatch
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   //Rendering
   React.useEffect(() => {
     const getData = async () => {
-      const response = await new UserController(username).getInfo();
+      const response = await new UserController(username).getInfo()
       if (response.error) {
         setResponseErr(response.error.response.data.message)
         setOpen(true)
@@ -32,7 +32,6 @@ const Home = () => {
     getData()
     // eslint-disable-next-line
   }, [username, dispatch])
-
 
   return (
     <div className='app'>
@@ -56,6 +55,15 @@ const Home = () => {
         />
       ) : (
         <>
+          {MoviesRecommend.length > 0 && (
+            <Row
+              title='Recommend Movies'
+              id='recommend movies'
+              theme='recommend'
+              data={MoviesRecommend}
+              fetchUrl={requests.fetchActionMovies}
+            />
+          )}
           <Row
             title='Action Movies'
             id='AM'

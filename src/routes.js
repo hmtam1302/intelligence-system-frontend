@@ -1,9 +1,12 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { Home, Login, AccountInformation, NotFound, ChangePassword, SignUp } from './pages';
+import { Home, Login, AccountInformation, NotFound, ChangePassword, SignUp, ConfigApriori } from './pages';
 const routes = (username) => [
   { path: '/login', element: username ? <Navigate to='/home' /> : <Login /> },
-  { path: '/register', element: username ? <Navigate to='/home' /> : <SignUp /> },
+  {
+    path: '/register',
+    element: username ? <Navigate to='/home' /> : <SignUp />,
+  },
   {
     path: '/user',
     element: !username ? (
@@ -13,6 +16,10 @@ const routes = (username) => [
     ),
   },
   { path: '/user/account', element: <AccountInformation /> },
+  {
+    path: '/user/config',
+    element: !username ? <Navigate to='/login' /> : <ConfigApriori />,
+  },
   {
     path: '/user/password',
     element: !username ? <Navigate to='/login' /> : <ChangePassword />,
