@@ -12,25 +12,25 @@ const Banner = () => {
     return str?.length > n ? str.substr(0, n - 1) + '...' : str
   }
 
-  useEffect(() => {
-    async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals)
-      //Give to our movie hook one of all the movies randomly
-      setMovie(
-        request.data.results[
-          Math.floor(Math.random() * request.data.results.length - 1)
-        ]
-      )
-      return request
-    }
-    fetchData()
-  }, [])
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const request = await axios.get(requests.fetchNetflixOriginals)
+  //     //Give to our movie hook one of all the movies randomly
+  //     setMovie(
+  //       request.data.results[
+  //         Math.floor(Math.random() * request.data.results.length - 1)
+  //       ]
+  //     )
+  //     return request
+  //   }
+  //   fetchData()
+  // }, [])
 
   return (
     <header
       className='banner'
       style={{
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+        backgroundImage: `url(https://collider.com/wp-content/uploads/inception_movie_poster_banner_01.jpg)`,
         backgroundPosition: 'top center',
         backgroundSize: 'cover',
       }}>

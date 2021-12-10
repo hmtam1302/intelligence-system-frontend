@@ -8,7 +8,7 @@ import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos'
 import { MovieController } from '../api/controllers'
 import { Card, CardContent } from '@material-ui/core'
 
-const Row = ({ title, fetchUrl, isLargeRow, theme, id }) => {
+const Row = ({ title, fetchUrl, isLargeRow, theme, id, data }) => {
   const [movies, setMovies] = useState([])
   const [modalVisibility, setModalVisibility] = useState(false)
   const [movieSelected, setMovieSelection] = useState({})
@@ -20,17 +20,20 @@ const Row = ({ title, fetchUrl, isLargeRow, theme, id }) => {
     async function fetchData() {
       //Dont move until we get the api answer
       let request
-      if (id === 'Search') {
+      if (id === 'recommend movies') {
+        request = await new MovieController().getMovieIds(data)
+      } else if (id === 'Search') {
         request = await new MovieController().getSearchMovie(theme)
       } else {
         request = await new MovieController().getGroupMovie(theme)
       }
+      // console.log('http://localhost:3000/home')
       setMovies(request.data)
       return request
     }
 
     fetchData()
-  }, [fetchUrl, theme, id])
+  }, [fetchUrl, theme, id, data])
 
   const handleClick = (movie) => {
     setModalVisibility(true)
@@ -55,9 +58,14 @@ const Row = ({ title, fetchUrl, isLargeRow, theme, id }) => {
             <Card
               key={movie.title + index}
               onClick={() => handleClick(movie)}
-              style={{ backgroundColor: '#2d2c2c', color: 'white', minWidth: 'calc(10% - 10px)', overflow: 'visible'}}
+              style={{
+                backgroundColor: '#2d2c2c',
+                color: 'white',
+                minWidth: 'calc(10% - 10px)',
+                overflow: 'visible',
+              }}
               className={`row__poster ${isLargeRow && 'row__posterLarge'}`}>
-              <CardContent >{movie.title}</CardContent>
+              <CardContent>{movie.title}</CardContent>
             </Card>
           ))}
         </div>

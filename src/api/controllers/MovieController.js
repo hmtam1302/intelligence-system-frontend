@@ -27,4 +27,15 @@ export class MovieController extends BaseController {
       return { error }
     }
   }
+
+  getMovieIds = async (ids) => {
+    try {
+      const response = await this.axios.post(this.url + '/user/movie/get', {
+        ids,
+      })
+      return { data: response.data }
+    } catch (error) {
+      return { error }
+    }
+  }
 }
