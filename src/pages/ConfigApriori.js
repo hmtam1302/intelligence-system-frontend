@@ -1,7 +1,7 @@
 import React from 'react'
 import '../assets/scss/AccountInformation.scss'
 import logo from '../assets/img/logo.png'
-import { Edit, Save, ArrowBack } from '@material-ui/icons'
+import { Save, ArrowBack } from '@material-ui/icons'
 import { TextField, Button } from '@material-ui/core'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -22,7 +22,6 @@ const ConfigApriori = () => {
   const [openSuccess, setOpenSuccess] = React.useState(false)
   const [responseErr, setResponseErr] = React.useState('')
   const [successResponse, setSuccessResponse] = React.useState('')
-  const [user, setUser] = React.useState({})
   const [data, setData] = React.useState({
     id: '',
     support: null,
@@ -91,15 +90,6 @@ const ConfigApriori = () => {
     }
   }
 
-  //Handle input changes
-  const toBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => resolve(reader.result)
-      reader.onerror = (error) => reject(error)
-    })
-
   return (
     <div className='main-container'>
       <img src={logo} alt='Logo' onClick={() => navigate('/')} />
@@ -108,12 +98,6 @@ const ConfigApriori = () => {
           <Loading />
         ) : (
           <div className='row'>
-            <div className='col-1 heading'>
-              <div
-                style={{ backgroundImage: `url(${user?.img})` }}
-                className='avatar'
-              />
-            </div>
             <div className='detail-info col-1'>
               <TextField
                 helperText=''

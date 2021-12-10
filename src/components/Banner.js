@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import PlayArrowIcon from '@material-ui/icons/PlayArrow'
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined'
-import axios from '../api/axios'
-import requests from '../api/requests'
 import '../assets/css/Banner.css'
 
 const Banner = () => {
-  const [movie, setMovie] = useState([])
+  // const [movie, setMovie] = useState([])
 
-  const truncate = (str, n) => {
-    return str?.length > n ? str.substr(0, n - 1) + '...' : str
-  }
+  // const truncate = (str, n) => {
+  //   return str?.length > n ? str.substr(0, n - 1) + '...' : str
+  // }
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -36,9 +34,9 @@ const Banner = () => {
       }}>
       <div className='banner__contents'>
         {/**Tittle */}
-        <h1 className='banner__title'>
+        {/* <h1 className='banner__title'>
           {movie?.title || movie?.name || movie?.original_name}
-        </h1>
+        </h1> */}
         <div className='banner__buttons'>
           <button className='banner__button play'>
             <PlayArrowIcon />
@@ -54,9 +52,9 @@ const Banner = () => {
         </div>
         {/**DIV > 2 BUTTONS */}
 
-        <h1 className='banner__description'>
+        {/* <h1 className='banner__description'>
           {truncate(movie?.overview, 150)}
-        </h1>
+        </h1> */}
         {/*Description*/}
       </div>
       <div className='banner--fadeBottom' />
