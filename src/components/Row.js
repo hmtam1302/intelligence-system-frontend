@@ -19,14 +19,8 @@ const Row = ({ title, fetchUrl, isLargeRow, theme, id, data }) => {
 
     async function fetchData() {
       //Dont move until we get the api answer
-      let request
-      if (id === 'recommend movies') {
-        request = await new MovieController().getMovieIds(data)
-      } else if (id === 'Search') {
-        request = await new MovieController().getSearchMovie(theme)
-      } else {
-        request = await new MovieController().getGroupMovie(theme)
-      }
+      const request = await new MovieController().getGroupMovie(fetchUrl)
+      
       // console.log('http://localhost:3000/home')
       setMovies(request.data)
       return request

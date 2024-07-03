@@ -1,4 +1,4 @@
-const API_KEY = "896c8566fc255f7c52f6ea6bd2901188";
+const API_KEY = "1f479e996b917f1c7226dfbfd3c88055";
 
 const requests = {
     fetchNetflixOriginals: `/discover/tv?api_key=${API_KEY}&with_networks=213`,
