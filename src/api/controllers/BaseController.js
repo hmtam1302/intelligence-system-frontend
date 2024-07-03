@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const PORT = process.env.REACT_APP_PORT;
-const URL = PORT !== 'null' ? `${BACKEND_URL}:${PORT}` : BACKEND_URL;
+const URL = PORT ? `${BACKEND_URL}:${PORT}` : BACKEND_URL;
 
 export class BaseController {
   constructor() {
